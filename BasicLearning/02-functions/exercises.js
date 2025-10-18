@@ -10,6 +10,11 @@ console.log("\nExercise 1: Basic Function Declaration")
 // - Call the function with your name and log the result
 
 // Your code here:
+function greet(name) {
+    return `Hello, ${name}`
+};
+
+console.log(greet(Yang));
 
 // Exercise 2: Arrow Function
 console.log("\nExercise 2: Arrow Function")
@@ -19,6 +24,10 @@ console.log("\nExercise 2: Arrow Function")
 // - Call the function with your birth year and log the result
 
 // Your code here:
+const calculateAge = (currentYear, birthYear) => {
+    return `Age: `, currentYear - birthYear
+};
+
 
 // Exercise 3: Function with Multiple Parameters
 console.log("\nExercise 3: Multiple Parameters")
