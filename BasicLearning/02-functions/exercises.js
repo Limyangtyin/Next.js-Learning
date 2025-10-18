@@ -14,7 +14,7 @@ function greet(name) {
     return `Hello, ${name}`
 };
 
-console.log(greet(Yang));
+console.log(greet("Yang"));
 
 // Exercise 2: Arrow Function
 console.log("\nExercise 2: Arrow Function")
@@ -25,8 +25,10 @@ console.log("\nExercise 2: Arrow Function")
 
 // Your code here:
 const calculateAge = (currentYear, birthYear) => {
-    return `Age: `, currentYear - birthYear
+    return `Age: ${currentYear - birthYear}`
 };
+
+console.log(calculateAge(2025, 1995));
 
 
 // Exercise 3: Function with Multiple Parameters
@@ -39,6 +41,17 @@ console.log("\nExercise 3: Multiple Parameters")
 // - Call the function with your information and log the result
 
 // Your code here:
+function createPortfolio(name, age, hobby) {
+    return {
+        name: name,
+        age: age,
+        hobby: hobby,
+        id: Date.now()
+    }
+};
+
+console.log(createPortfolio("Yang", 29, ["game", "sleep", "food"]));
+
 
 // Exercise 4: Default Parameters
 console.log("\nExercise 4: Default Parameters")
@@ -49,6 +62,12 @@ console.log("\nExercise 4: Default Parameters")
 // - Call it twice: once with just name, once with both parameters
 
 // Your code here:
+function introduce(name, greeting = "Hello"){
+    return `${greeting}, my name is ${name}`
+};
+
+console.log(introduce("Yang"));
+console.log(introduce("Yang", "Hi"));
 
 // Exercise 5: Return Values
 console.log("\nExercise 5: Return Values")
@@ -59,6 +78,18 @@ console.log("\nExercise 5: Return Values")
 // - Test both functions with different ages
 
 // Your code here:
+function isAdult(age){
+    return age >= 18
+};
+
+function canVote(age){
+    return age >=21
+};
+
+console.log(isAdult(15));
+console.log(isAdult(28));
+console.log(canVote(15));
+console.log(canVote(28));
 
 // Exercise 6: Function Expression
 console.log("\nExercise 6: Function Expression")
@@ -69,6 +100,25 @@ console.log("\nExercise 6: Function Expression")
 // - Call the function with sample values and log the result
 
 // Your code here:
+const calculateBMI = (weight, height) => {
+    const heightInMeters = height / 100
+    const bmi = weight / (heightInMeters * heightInMeters);
+
+    let category = '';
+    if (bmi < 18.5) {
+        category = 'Underweight';
+    } else if (bmi < 24.9) {
+        category = 'Normal weight';
+    } else if (bmi < 29.9) {
+        category = 'Overweight';
+    } else {
+        category = 'Obese';
+    }
+
+    return `You're ${category} and your BMI: ${bmi}.`
+};
+
+console.log(calculateBMI(75, 170));
 
 // Exercise 7: Array Processing Function
 console.log("\nExercise 7: Array Processing")
