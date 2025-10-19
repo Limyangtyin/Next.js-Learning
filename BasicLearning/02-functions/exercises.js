@@ -131,6 +131,24 @@ console.log("\nExercise 7: Array Processing")
 // - Test with an array of your choice
 
 // Your code here:
+function processNumbers(num) {
+    num.sort((a, b) => a - b);
+    let maxNumIndex = num.length - 1
+    let minNumIndex = 0
+    let sumNum = 0
+    while(minNumIndex <= maxNumIndex){
+        sumNum += num[minNumIndex++]
+    }
+    return {
+        sum: sumNum,
+        average: sumNum/2,
+        max: num[maxNumIndex],
+        min: num[0]
+    };
+};
+
+let num = [11, 5, 5, 9, 10];
+console.log(processNumbers(num));
 
 // Exercise 8: String Manipulation Function
 console.log("\nExercise 8: String Manipulation")
@@ -144,6 +162,26 @@ console.log("\nExercise 8: String Manipulation")
 // - Test with your full name
 
 // Your code here:
+function formatName(name){
+    let word = name.split(" ")
+    let minIndex = 0
+    let maxIndex = word.length - 1
+    let length = name.split(" ").join("").length
+    let initial = ""
+    while(minIndex < word.length){
+        initial += word[minIndex][0]
+        minIndex ++
+    }
+    return {
+        fullName: name,
+        firstName: word[0],
+        lastName: word[maxIndex],
+        initials: initial,
+        length: length
+    }
+};
+
+console.log(formatName("Yang Tyin"))
 
 // Exercise 9: Higher-Order Function
 console.log("\nExercise 9: Higher-Order Function")
@@ -153,6 +191,16 @@ console.log("\nExercise 9: Higher-Order Function")
 // - Test both functions with different numbers
 
 // Your code here:
+function createMultiplier(factor){
+    return function (num){
+        return num * factor
+    };
+}
+
+let double = createMultiplier(2);
+console.log(double(4))
+let triple = createMultiplier(3);
+console.log(triple(5))
 
 // Exercise 10: Callback Function
 console.log("\nExercise 10: Callback Function")
@@ -165,6 +213,19 @@ console.log("\nExercise 10: Callback Function")
 // - Test with both number and string arrays
 
 // Your code here:
+function processArray(array, callback){
+    const newArray = [];
+    for(let i = 0; i < array.length; i++){
+        newArray.push(callback(array[i]))
+    }
+    return newArray
+}
+
+let numArray = [1, 2, 3, 4, 5]
+let strArray = ["bad", "good", "great", "better", "awesome"]
+console.log(processArray(numArray, x => x * x))
+console.log(processArray(strArray, x => x.toUpperCase()))
+
 
 // Exercise 11: Object Method
 console.log("\nExercise 11: Object Method")
@@ -178,6 +239,39 @@ console.log("\nExercise 11: Object Method")
 // - Test all methods
 
 // Your code here:
+function bankAccount(initialBalance, owner, accountNumber){
+    return{
+        balance: initialBalance,
+        owner: owner,
+        accNum: accountNumber,
+
+        deposit: function(amount){
+            console.log(`Balance: $${this.balance}`)
+            this.balance += amount
+            return `Deposit Amount: $${amount}, Current Balance: $${this.balance}`
+        },
+        withdraw: function(amount){
+            console.log(`Balance: $${this.balance}`)
+            if(amount > this.balance){
+                return "Insufficient Money"
+            }
+            this.balance -= amount
+            return `Withdraw Amount: $${amount}, Current Balance: $${this.balance}`
+        },
+        getBalance: function(balance){
+            return `Balance: $${this.balance}`
+        },
+        getInfo: function(owner, accountNumber, balance){
+            return `Owner: ${this.owner.toUpperCase()}, Account Number: ${this.accNum}, Current Balance: $${this.balance}`
+        }
+    };
+}
+
+const yangAcc = bankAccount(10000, "Yang Tyin", "123456789")
+console.log(yangAcc.getBalance())
+console.log(yangAcc.deposit(2000))
+console.log(yangAcc.withdraw(338))
+console.log(yangAcc.getInfo())
 
 // Exercise 12: Rest Parameters
 console.log("\nExercise 12: Rest Parameters")
@@ -189,6 +283,25 @@ console.log("\nExercise 12: Rest Parameters")
 // - Test with different numbers of items
 
 // Your code here:
+function calculateTotal(...prices){
+    let total = prices.reduce((total, num) => total + num, 0).toFixed(2)
+
+    let discount = 0
+    if(prices.length >= 3){
+        discount += 0.1
+    }
+
+    let final = (total - (total * discount)).toFixed(2)
+
+    return {
+        totalPrice: total,
+        discount: `${discount*100}%`,
+        finalTotal: final
+    }
+}
+
+console.log(calculateTotal(20.4, 5.6, 7.8, 9.9))
+console.log(calculateTotal(9.4, 14.8))
 
 // Exercise 13: Function Scope Practice
 console.log("\nExercise 13: Function Scope")
@@ -202,6 +315,19 @@ console.log("\nExercise 13: Function Scope")
 // - Comment out the problematic line
 
 // Your code here:
+function outerFunction(){
+    let outerVar = "I'm outside"
+    function innerFunction(){
+        let innerVar = "I'm inside"
+        console.log("Inside", outerVar) // Inside can read outside variable
+        console.log("Inside", innerVar)
+    }
+    innerFunction()
+    console.log("Outside", outerVar)
+    // console.log("Outside", innerVar) // Outside cannot read inside variable
+}
+
+console.log(outerFunction())
 
 // Exercise 14: IIFE (Immediately Invoked Function Expression)
 console.log("\nExercise 14: IIFE")
@@ -214,6 +340,18 @@ console.log("\nExercise 14: IIFE")
 // - Comment out the problematic line
 
 // Your code here:
+const IIFE = (function (){
+    let secret = "This is secret"
+
+    return {
+        reveal: function () {
+            return secret
+        }
+    }
+})()
+
+console.log(IIFE.reveal())
+console.log(IIFE)
 
 // Exercise 15: Complex Function
 console.log("\nExercise 15: Complex Function")
@@ -228,6 +366,38 @@ console.log("\nExercise 15: Complex Function")
 // - Test with a sample paragraph
 
 // Your code here:
+function analyzeText(text) {
+    let words = text.trim().split(/\s+/);
+    let wordCount = words.length;
+    let charCount = text.length;
+    let charCountNoSpace = text.replace(/\s/g, "").length;
+    let sentCount = text.split(/[.!?]/).filter(s => s.trim() !== "").length;
+  
+    let sumCharCount = 0;
+    let longestWord = "";
+  
+    for (let word of words) {
+      sumCharCount += word.length;
+      if (word.length > longestWord.length) {
+        longestWord = word;
+      }
+    }
+  
+    let avgWordLength = sumCharCount / wordCount;
+  
+    return {
+      wordCount,
+      characterCount: charCount,
+      characterCountNoSpaces: charCountNoSpace,
+      sentenceCount: sentCount,
+      averageWordLength: avgWordLength.toFixed(2),
+      longestWord
+    };
+  }
+  
+  console.log(analyzeText("Hi My Name Is Yang Tyin"));
+  
+
 
 console.log("\n=== END OF EXERCISES ===")
 console.log("Great job! Check your solutions against the solutions.js file!")
