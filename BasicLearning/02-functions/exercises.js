@@ -11,7 +11,7 @@ console.log("\nExercise 1: Basic Function Declaration")
 
 // Your code here:
 function greet(name) {
-    return `Hello, ${name}`
+    return `Hello, ${name}!`
 };
 
 console.log(greet("Yang"));
@@ -141,7 +141,7 @@ function processNumbers(num) {
     }
     return {
         sum: sumNum,
-        average: sumNum/2,
+        average: sumNum/num.length,
         max: num[maxNumIndex],
         min: num[0]
     };
@@ -258,10 +258,10 @@ function bankAccount(initialBalance, owner, accountNumber){
             this.balance -= amount
             return `Withdraw Amount: $${amount}, Current Balance: $${this.balance}`
         },
-        getBalance: function(balance){
+        getBalance: function(){
             return `Balance: $${this.balance}`
         },
-        getInfo: function(owner, accountNumber, balance){
+        getInfo: function(){
             return `Owner: ${this.owner.toUpperCase()}, Account Number: ${this.accNum}, Current Balance: $${this.balance}`
         }
     };
