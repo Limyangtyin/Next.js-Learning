@@ -10,6 +10,9 @@ console.log("\nExercise 1: Basic For Loop")
 // - Format: "Number: X"
 
 // Your code here:
+for(let i = 1; i < 11; i++){
+    console.log(`Number: ${i}`);
+}
 
 // Exercise 2: Countdown Loop
 console.log("\nExercise 2: Countdown Loop")
@@ -18,6 +21,12 @@ console.log("\nExercise 2: Countdown Loop")
 // - After the loop, print "Blast off!"
 
 // Your code here:
+for(let i = 10; i >= 1; i--){
+    console.log(`Countdown: ${i}`)
+}
+
+console.log("Blast off!")
+
 
 // Exercise 3: Array Iteration
 console.log("\nExercise 3: Array Iteration")
@@ -26,6 +35,10 @@ console.log("\nExercise 3: Array Iteration")
 // - Format: "Food 1: [food name]"
 
 // Your code here:
+let favFood = ["Burger", "Fries", "Chicken Wings", "Ice Cream", "Snacks"]
+for(let i = 0; i < favFood.length; i++){
+    console.log(`Food ${i+1}: ${favFood[i]}`);
+}
 
 // Exercise 4: While Loop
 console.log("\nExercise 4: While Loop")
@@ -35,6 +48,11 @@ console.log("\nExercise 4: While Loop")
 // - Format: "Even number: X"
 
 // Your code here:
+let x = 2
+while(x <= 20){
+    console.log(`Even number: ${x}`)
+    x += 2
+}
 
 // Exercise 5: Do-While Loop
 console.log("\nExercise 5: Do-While Loop")
@@ -45,6 +63,14 @@ console.log("\nExercise 5: Do-While Loop")
 // - After the loop, print "Done!"
 
 // Your code here:
+let counter = 1;
+do{
+    console.log(`Attempt: ${counter}`)
+    counter++
+} while(counter < 6) 
+
+console.log("Done!")
+
 
 // Exercise 6: For...of Loop
 console.log("\nExercise 6: For...of Loop")
@@ -53,6 +79,11 @@ console.log("\nExercise 6: For...of Loop")
 // - Format: "Color: [color name]"
 
 // Your code here:
+const colorArray = ["red", "green", "blue", "yellow", "purple"]
+
+for(let i of colorArray){
+    console.log(`Color: ${i}`)
+}
 
 // Exercise 7: For...in Loop
 console.log("\nExercise 7: For...in Loop")
@@ -65,6 +96,16 @@ console.log("\nExercise 7: For...in Loop")
 // - Format: "[property]: [value]"
 
 // Your code here:
+const car = {
+    make: "Toyota",
+    model: "Camry",
+    year: 2020,
+    color: "blue"
+}
+
+for(let i in car){
+    console.log(`${i}: ${car[i]}`)
+}
 
 // Exercise 8: Nested Loops
 console.log("\nExercise 8: Nested Loops")
@@ -75,6 +116,13 @@ console.log("\nExercise 8: Nested Loops")
 // - Only print the first 3 rows and 3 columns
 
 // Your code here:
+for(let i = 1; i < 6; i++){
+    for(let j = 1; j < 6; j++){
+        if(i < 4 && j < 4){
+            console.log(`${i} x ${j} = ${i*j}`)
+        }
+    }
+}
 
 // Exercise 9: Loop with Break
 console.log("\nExercise 9: Loop with Break")
@@ -84,6 +132,15 @@ console.log("\nExercise 9: Loop with Break")
 // - Format: "Number: X"
 
 // Your code here:
+let i = 1;
+while(i <= 10){
+    if(i === 7){
+        console.log("Stopped at 7")
+        break
+    }
+    console.log(`Number: ${i}`)
+    i++
+}
 
 // Exercise 10: Loop with Continue
 console.log("\nExercise 10: Loop with Continue")
@@ -93,6 +150,13 @@ console.log("\nExercise 10: Loop with Continue")
 // - Format: "Number: X" for others
 
 // Your code here:
+for(let i = 1; i <= 10; i++){
+    if(i === 3 || i === 7){
+        console.log(`Skipped ${i}`)
+        continue
+    }
+    console.log(`Number: ${i}`)
+}
 
 // Exercise 11: Sum of Numbers
 console.log("\nExercise 11: Sum of Numbers")
@@ -103,6 +167,13 @@ console.log("\nExercise 11: Sum of Numbers")
 // - After loop, print "Final sum: Z"
 
 // Your code here:
+const numArrays = [5, 10, 15, 20, 25]
+let sum = 0
+for(let i = 0; i < numArrays.length; i++){
+    sum += numArrays[i]
+    console.log(`Number: ${numArrays[i]}, Running total: ${sum}`)
+}
+console.log(`Final sum: ${sum}`)
 
 // Exercise 12: Find Maximum
 console.log("\nExercise 12: Find Maximum")
@@ -113,6 +184,15 @@ console.log("\nExercise 12: Find Maximum")
 // - After loop, print "Maximum number: Z"
 
 // Your code here:
+const numArray = [45, 23, 78, 12, 67, 34, 89]
+let max = numArray[0]
+for(let i = 0; i < numArray.length; i++){
+    if(numArray[i] > max){
+        max = numArray[i]
+    }
+    console.log(`Number: ${numArray[i]}, Current max: ${max}`)
+}
+console.log(`Maximum number: ${max}`)
 
 // Exercise 13: String Processing
 console.log("\nExercise 13: String Processing")
@@ -123,6 +203,17 @@ console.log("\nExercise 13: String Processing")
 // - After loop, print "Total vowels: Z"
 
 // Your code here:
+const string = "Hello World"
+let count = 0
+const vowels = ["a", "e", "i", "o", "u"]
+
+for(let i = 0; i < string.length; i++){
+    if(vowels.includes(string[i].toLowerCase())){
+        count++
+    }
+    console.log(`Character: ${string[i]}, Vowel count: ${count}`)
+}
+console.log(`Total vowels: ${count}`)
 
 // Exercise 14: Array Building
 console.log("\nExercise 14: Array Building")
@@ -133,6 +224,7 @@ console.log("\nExercise 14: Array Building")
 // - After loop, print the complete squares array
 
 // Your code here:
+
 
 // Exercise 15: Object Processing
 console.log("\nExercise 15: Object Processing")

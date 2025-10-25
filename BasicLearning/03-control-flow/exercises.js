@@ -492,18 +492,18 @@ function recommendActivity(weather, temp, timeOfDay, isWeekend){
     }
 }
 
-// Test cases for recommendActivity
 console.log("\nTesting recommendActivity:")
-console.log(recommendActivity("rain", 20, "morning", false))          // Should: Stay indoors and read a book
-console.log(recommendActivity("thunderstorm", 25, "evening", true))   // Should: Stay indoors and read a book
-console.log(recommendActivity("sunny", 35, "afternoon", false))       // Should: Go swimming or stay in air conditioning
-console.log(recommendActivity("clear", 5, "evening", true))           // Should: Stay warm indoors with hot chocolate
-console.log(recommendActivity("sunny", 20, "morning", true))          // Should: Go for a hike
-console.log(recommendActivity("clear", 25, "evening", true))          // Should: Go to a restaurant
-console.log(recommendActivity("sunny", 15, "morning", false))         // Should: Go for a jog
-console.log(recommendActivity("cloudy", 22, "afternoon", false))      // Should: Have a picnic
-console.log(recommendActivity("clear", 18, "evening", false))         // Should: Watch a movie
-console.log(recommendActivity("windy", 20, "night", false))           // Should: Take a relaxing walk
+console.log(recommendActivity("rain", 20, "morning", false))  
+console.log(recommendActivity("thunderstorm", 25, "evening", true))  
+console.log(recommendActivity("sunny", 35, "afternoon", false)) 
+console.log(recommendActivity("clear", 5, "evening", true))         
+console.log(recommendActivity("sunny", 20, "morning", true))        
+console.log(recommendActivity("clear", 25, "evening", true))     
+console.log(recommendActivity("sunny", 15, "morning", false))
+console.log(recommendActivity("cloudy", 22, "afternoon", false))
+console.log(recommendActivity("clear", 18, "evening", false))   
+console.log(recommendActivity("windy", 20, "night", false))     
+
 
 console.log("\n=== END OF EXERCISES ===")
 console.log("Great job! Check your solutions against the solutions.js file!")
