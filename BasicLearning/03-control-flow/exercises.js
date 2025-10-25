@@ -408,6 +408,48 @@ console.log("\nExercise 14: Array/Object Validation")
 // - Test with: "", "hello", [], [1,2,3], {}, {name: "test"}, null, undefined
 
 // Your code here:
+function validateData(a) {
+    let isEmpty;
+    let hasContent;
+    let size;
+    
+    if(a === null){
+        isEmpty = true
+    }
+    else{
+        isEmpty = false
+    }
+
+    if(a !== null && a !== undefined){
+        hasContent = true
+    }
+    else{
+        hasContent = false
+    }
+
+    if(a === null || a === undefined){
+        size = "Null/Undefined value!"
+    }
+    else{
+        size = a.length
+    }
+
+    return {
+        isEmpty: isEmpty,
+        hasContent: hasContent,
+        type: typeof a,
+        size: size
+    }
+}
+
+console.log(validateData(""))
+console.log(validateData("hello"))
+console.log(validateData([]))
+console.log(validateData([1, 2, 3]))
+console.log(validateData({}))
+console.log(validateData({name: "test"}))
+console.log(validateData(null))
+console.log(validateData(undefined))
 
 // Exercise 15: Complex Decision Tree
 console.log("\nExercise 15: Complex Decision Tree")
@@ -425,6 +467,43 @@ console.log("\nExercise 15: Complex Decision Tree")
 // - Test with different combinations
 
 // Your code here:
+
+function recommendActivity(weather, temp, timeOfDay, isWeekend){
+    const rainyCondition = ["rain", "raining", "thunderstorm"]
+
+    if(rainyCondition.includes(weather)){
+        return "Stay indoors and read a book"
+    } else if(temp > 30){
+        return "Go swimming or stay in air conditioning"
+    } else if(temp < 10){
+        return "Stay warm infoors with hot chocolate"
+    } else if(isWeekend === true && timeOfDay === "morning"){
+        return "Go for a hike"
+    } else if(isWeekend === true && timeOfDay === "everning"){
+        return "Go to a restaurant"
+    } else if(timeOfDay === "morning"){
+        return "Go for a jog"
+    } else if(timeOfDay === "afternoon"){
+        return "Have a picnic"
+    } else if(timeOfDay === "evening"){
+        return "Watch a movie"
+    } else{
+        return "Take a relaxing walk"
+    }
+}
+
+// Test cases for recommendActivity
+console.log("\nTesting recommendActivity:")
+console.log(recommendActivity("rain", 20, "morning", false))          // Should: Stay indoors and read a book
+console.log(recommendActivity("thunderstorm", 25, "evening", true))   // Should: Stay indoors and read a book
+console.log(recommendActivity("sunny", 35, "afternoon", false))       // Should: Go swimming or stay in air conditioning
+console.log(recommendActivity("clear", 5, "evening", true))           // Should: Stay warm indoors with hot chocolate
+console.log(recommendActivity("sunny", 20, "morning", true))          // Should: Go for a hike
+console.log(recommendActivity("clear", 25, "evening", true))          // Should: Go to a restaurant
+console.log(recommendActivity("sunny", 15, "morning", false))         // Should: Go for a jog
+console.log(recommendActivity("cloudy", 22, "afternoon", false))      // Should: Have a picnic
+console.log(recommendActivity("clear", 18, "evening", false))         // Should: Watch a movie
+console.log(recommendActivity("windy", 20, "night", false))           // Should: Take a relaxing walk
 
 console.log("\n=== END OF EXERCISES ===")
 console.log("Great job! Check your solutions against the solutions.js file!")
