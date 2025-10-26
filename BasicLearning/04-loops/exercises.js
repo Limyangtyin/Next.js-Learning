@@ -224,7 +224,13 @@ console.log("\nExercise 14: Array Building")
 // - After loop, print the complete squares array
 
 // Your code here:
-
+let squares = []
+for(let i = 1; i <= 10; i++){
+    let square = i*i
+    console.log(`Number: ${i}, Square: ${square}`)
+    squares.push(square)
+}
+console.log(squares)
 
 // Exercise 15: Object Processing
 console.log("\nExercise 15: Object Processing")
@@ -236,6 +242,24 @@ console.log("\nExercise 15: Object Processing")
 // - After loop, print "Highest grade: Z by [student name]"
 
 // Your code here:
+let studentGrade = {
+    Alice: 85,
+    Bob: 92,
+    Charlie: 78,
+    Diana: 96,
+    Eve: 88
+}
+let highGrade = 0
+let highGradeStudent = ""
+
+for(let i in studentGrade){
+    if(studentGrade[i] > highGrade){
+        highGrade = studentGrade[i]
+        highGradeStudent = i
+    }
+    console.log(`Student: ${i}, Grade: ${studentGrade[i]}`)
+}
+console.log(`Highest grade: ${highGrade} by ${highGradeStudent}`)
 
 // Exercise 16: Pattern Printing
 console.log("\nExercise 16: Pattern Printing")
@@ -246,6 +270,14 @@ console.log("\nExercise 16: Pattern Printing")
 // - Each row should have row number of asterisks
 
 // Your code here:
+for(let i = 0; i <5; i++){
+    let row = ""
+    for(let j = 0; j <= i; j++){
+        row += "*"
+    }
+    console.log(row)
+}
+
 
 // Exercise 17: Array Methods Alternative
 console.log("\nExercise 17: Array Methods Alternative")
@@ -257,6 +289,14 @@ console.log("\nExercise 17: Array Methods Alternative")
 // - Print all results
 
 // Your code here:
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+array.forEach(i => console.log(`Doubled number: ${i+i}`));
+let squareNum = array.map(i => i*i);
+let evenNum = array.filter(i => i % 2 === 0)
+let sumNum = array.reduce((total, i) => total + i, 0)
+console.log(squareNum)
+console.log(evenNum)
+console.log(sumNum)
 
 // Exercise 18: Loop with Functions
 console.log("\nExercise 18: Loop with Functions")
@@ -268,6 +308,22 @@ console.log("\nExercise 18: Loop with Functions")
 // - Print each number and whether it's prime
 
 // Your code here:
+function isPrime(num){
+    if(num < 2){
+        return false
+    }
+    for(let i = 2; i < num; i++){ 
+        if(num % i === 0){
+            return false
+        }
+    }
+    
+    return true
+}
+
+for(let num = 2; num <= 20; num++){
+    console.log(`Number: ${num}, Prime: ${isPrime(num)}`)
+}
 
 // Exercise 19: Complex Loop Logic
 console.log("\nExercise 19: Complex Loop Logic")
@@ -280,6 +336,20 @@ console.log("\nExercise 19: Complex Loop Logic")
 // - After loop, print final sum and concatenated string
 
 // Your code here:
+let arrays = [1, "hello", 42, "world", 3.14, "test", 100]
+let sumNums = 0  
+let concatenated = ""  
+
+for(let i = 0; i < arrays.length; i++){
+    if(typeof arrays[i] === "number"){
+        sumNums += arrays[i]
+    } 
+    if(typeof arrays[i] === "string"){
+        concatenated += arrays[i]
+    }
+    console.log(`Element: ${arrays[i]}, Type: ${typeof arrays[i]}, Sum: ${sumNums}, Concatenated: ${concatenated}`)
+}
+console.log(`Final sum: ${sumNums}, Concatenated string: ${concatenated}`)
 
 // Exercise 20: Performance Challenge
 console.log("\nExercise 20: Performance Challenge")
@@ -291,6 +361,30 @@ console.log("\nExercise 20: Performance Challenge")
 // - Print the results and execution times
 
 // Your code here:
+let testArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+console.time('For Loop') 
+let evenNumbersForLoop = []
+for(let i = 0; i < testArray.length; i++){
+    if(testArray[i] % 2 === 0){
+        evenNumbersForLoop.push(testArray[i])
+    }
+}
+console.timeEnd('For Loop') 
+console.log('For Loop result:', evenNumbersForLoop)
+
+
+console.time('forEach Method') 
+let evenNumbersForEach = []
+testArray.forEach(num => {
+    if(num % 2 === 0){
+        evenNumbersForEach.push(num)
+    }
+})
+console.timeEnd('forEach Method') 
+console.log('forEach result:', evenNumbersForEach)
+    
+
 
 console.log("\n=== END OF EXERCISES ===")
 console.log("Great job! Check your solutions against the solutions.js file!")
