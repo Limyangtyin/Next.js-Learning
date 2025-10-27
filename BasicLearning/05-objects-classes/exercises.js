@@ -14,6 +14,15 @@ console.log("\nExercise 1: Basic Object Creation")
 // - Log the object and access each property
 
 // Your code here:
+const book = {
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    year: 1925,
+    pages: 180,
+    isRead: false,
+}
+
+console.log(book)
 
 // Exercise 2: Object Methods
 console.log("\nExercise 2: Object Methods")
@@ -25,6 +34,37 @@ console.log("\nExercise 2: Object Methods")
 // - Test all methods with sample values
 
 // Your code here:
+const calculator = {
+    add: function(a, b){
+        return a + b
+    },
+    subtract: function(a, b){
+        return a - b
+    },
+    multiply: function(a, b){
+        return a * b
+    },
+    divide: function(a, b){
+        if(b!==0){
+            return a / b
+        } else {
+            return "Cannot divide by zero"
+        }
+    }
+}
+
+let a = 10
+let b = 3
+console.log(calculator.add(a, b))
+console.log(calculator.subtract(a, b))
+console.log(calculator.multiply(a, b))
+console.log(calculator.divide(a, b))
+
+b = 0
+console.log(calculator.add(a, b))
+console.log(calculator.subtract(a, b))
+console.log(calculator.multiply(a, b))
+console.log(calculator.divide(a, b))
 
 // Exercise 3: Object Property Manipulation
 console.log("\nExercise 3: Object Property Manipulation")
@@ -37,6 +77,16 @@ console.log("\nExercise 3: Object Property Manipulation")
 // - Log the updated object
 
 // Your code here:
+const person = {
+    name: "John",
+    age: 25,
+    city: "New York"
+}
+
+person.email = "john@gmail.com"
+person.phone = "012-3456789"
+person.age = 26
+console.log(person)
 
 // Exercise 4: Object with Nested Objects
 console.log("\nExercise 4: Object with Nested Objects")
@@ -48,6 +98,24 @@ console.log("\nExercise 4: Object with Nested Objects")
 // - Log the student's name, math grade, and city
 
 // Your code here:
+const student = {
+    name: "Alice",
+    age: 20,
+    grades: {
+        math: 85,
+        science: 92, 
+        english: 78
+    },
+    address: {
+        street: "Baker Street",
+        city: "Brooklyn",
+        zipCode: 12345
+    }
+}
+
+console.log(student.name)
+console.log(student.grades.math)
+console.log(student.address.city)
 
 // Exercise 5: Object Destructuring
 console.log("\nExercise 5: Object Destructuring")
@@ -60,6 +128,17 @@ console.log("\nExercise 5: Object Destructuring")
 // - Log each extracted value
 
 // Your code here:
+const product = {
+    name: "Laptop",
+    price: 999.99,
+    brand: "Dell",
+    inStock: true
+}
+
+const {name, price, brand} = product
+console.log(name)
+console.log(price)
+console.log(brand)
 
 // Exercise 6: Object Spread Operator
 console.log("\nExercise 6: Object Spread Operator")
@@ -70,6 +149,24 @@ console.log("\nExercise 6: Object Spread Operator")
 // - Log the merged object
 
 // Your code here:
+const user1 = {
+    name: "John",
+    age: 30,
+    city: "Boston"
+}
+
+const user2 = {
+    name: "Jane",
+    age: 25,
+    country: "USA"
+}
+
+const user3 = {
+    ...user1,
+    ...user2
+}
+
+console.log(user3)
 
 // Exercise 7: Object Methods with 'this'
 console.log("\nExercise 7: Object Methods with 'this'")
@@ -83,6 +180,32 @@ console.log("\nExercise 7: Object Methods with 'this'")
 // - Test all methods
 
 // Your code here:
+const bankAccount = {
+    balance: 1000,
+    accountNumber: "123456",
+    deposit: function (a){
+        return this.balance = a + this.balance
+    },
+    withdraw: function(a){
+        if(a > this.balance){
+            return "Insufficient Money"
+        } else{
+            return this.balance= this.balance - a
+        }
+    },
+    getBalance: function(){
+        return this.balance
+    },
+    getInfo: function(){
+        return `Acc Num: ${this.accountNumber}, Balance: ${this.balance}`
+    }
+}
+
+console.log(bankAccount.deposit(500))
+console.log(bankAccount.withdraw(1000))
+console.log(bankAccount.getBalance())
+console.log(bankAccount.deposit(1000))
+console.log(bankAccount.getInfo())
 
 // Exercise 8: Basic Class Creation
 console.log("\nExercise 8: Basic Class Creation")
@@ -93,6 +216,27 @@ console.log("\nExercise 8: Basic Class Creation")
 // - Create two instances and test methods
 
 // Your code here:
+class Person {
+    constructor(name, age, email){
+        this.name = name,
+        this.age = age,
+        this.email = email
+    }
+    greet(){
+        return `Hello, I'm ${this.name}`
+    }
+    getInfo(){
+        return `Name: ${this.name}, Age: ${this.age}, Email: ${this.email}`
+    }
+}
+
+const John = new Person("John", 28, "john@gmail.com")
+const Jane = new Person("Jane", 30, "jane@gmail.com")
+
+console.log(John.greet())
+console.log(John.getInfo())
+console.log(Jane.greet())
+console.log(Jane.getInfo())
 
 // Exercise 9: Class with Methods
 console.log("\nExercise 9: Class with Methods")
@@ -105,6 +249,44 @@ console.log("\nExercise 9: Class with Methods")
 // - Create instance and test all methods
 
 // Your code here:
+class Rectangle {
+    constructor(width, height){
+        this.width = width,
+        this.height = height
+    }
+
+    getArea(){
+        return this.width * this.height
+    }
+    getPerimeter(){
+        return (this.width + this.height) * 2
+    }
+    isSquare(){
+        if(this.width === this.height){
+            return true
+        }else{
+            return false
+        }
+    }
+    scale(a){
+        this.width *= a
+        this.height *= a
+    }
+}
+
+let rect = new Rectangle(7, 9)
+console.log(rect.getArea())
+console.log(rect.getPerimeter())
+console.log(rect.isSquare())
+rect.scale(3)
+console.log(rect.getArea())
+
+rect = new Rectangle(5, 5)
+console.log(rect.getArea())
+console.log(rect.getPerimeter())
+console.log(rect.isSquare())
+rect.scale(3)
+console.log(rect.getArea())
 
 // Exercise 10: Class Inheritance
 console.log("\nExercise 10: Class Inheritance")
@@ -118,6 +300,34 @@ console.log("\nExercise 10: Class Inheritance")
 // - Create instances and test methods
 
 // Your code here:
+class Animal {
+    constructor(name, species, age){
+        this.name = name,
+        this.species = species,
+        this.age = age
+    }
+
+    speak(){
+        return `${this.name} makes a sound`
+    }
+    getInfo(){
+        return `This is a ${this.species}, His/Her name is ${this.name} and he/she is ${this.age}-years old.`
+    }
+}
+
+class Dog extends Animal{
+    speak(){
+        return `${this.name} barks!`
+    }
+    fetch(){
+        return `${this.name} fetches the ball`
+    }
+}
+
+const dog = new Dog("John", "BullDog", 5)
+console.log(dog.speak())
+console.log(dog.fetch())
+console.log(dog.getInfo())
 
 // Exercise 11: Static Methods
 console.log("\nExercise 11: Static Methods")
@@ -129,6 +339,32 @@ console.log("\nExercise 11: Static Methods")
 // - Test all static methods
 
 // Your code here:
+class MathHelper{
+    static add(a, b){
+        return a + b
+    }
+    static multiply(a, b){
+        return a * b
+    }
+    static isEven(number){
+        return number % 2 === 0
+    }
+    static getRandomNumber(min, max){
+        // Math.floor() - round to whole number
+        // Math.random() - gives random float number from 0 to 1
+        // (max - min) - get the range
+        // Math.random() * (max - min) - scale to your desired factor
+        // + min - shift to the starting point (always start from "min")
+
+        return Math.floor(Math.random() * (max - min) + min)  
+    }
+}
+
+console.log(MathHelper.add(2, 6))
+console.log(MathHelper.multiply(2, 6))
+console.log(MathHelper.isEven(6))
+console.log(MathHelper.isEven(9))
+console.log(MathHelper.getRandomNumber(2, 50))
 
 // Exercise 12: Getters and Setters
 console.log("\nExercise 12: Getters and Setters")
@@ -141,6 +377,44 @@ console.log("\nExercise 12: Getters and Setters")
 // - Create instance and test getters/setters
 
 // Your code here:
+class Temperature{
+    #_celsius
+    constructor(celsius){
+        this.#_celsius = celsius
+    }
+
+    get celsius() {
+        return this.#_celsius
+    }
+
+    set celsius(value){
+        if(typeof value === "number"){
+            this.#_celsius = value
+        }
+    }
+
+    get fahrenheit() {
+        return (this.#_celsius * 9/5) + 32
+    }
+
+    set fahrenheit(value) {
+        if(typeof value === "number"){
+            this.#_celsius = (value - 32) * 5/9
+        }
+    }
+}
+
+const temp = new Temperature(32)
+console.log(temp.celsius)
+console.log(temp.fahrenheit)
+
+temp.celsius = "Hello"
+console.log(temp.celsius) // It will ignore the faulty value and print the previous value
+console.log(temp.fahrenheit)
+
+temp.fahrenheit = 90
+console.log(temp.celsius)
+console.log(temp.fahrenheit)
 
 // Exercise 13: Object Composition
 console.log("\nExercise 13: Object Composition")
@@ -152,6 +426,38 @@ console.log("\nExercise 13: Object Composition")
 // - Test the composed object
 
 // Your code here:
+const engine = {
+    type: "V8",
+    horsepower: 400,
+    start(){
+        return "Engine started"
+    },
+    stop(){
+        return "Engine stopped"
+    }
+}
+
+const wheels = {
+    count: 4, 
+    material: "alloy",
+    rotate(){}
+}
+
+const car = {
+    make: "BMW",
+    model: "X5",
+    engine: engine,
+    wheels: wheels,
+    start(){
+        return `${this.make}-${this.model} turns on`
+    },
+    getSpecs(){
+        return `This is ${this.make}-${this.model} with ${this.engine.type} engine and ${this.engine.horsepower}hp. All ${this.wheels.count} wheels are made of ${this.wheels.material}.`
+    }
+}
+
+console.log(car.start())
+console.log(car.getSpecs())
 
 // Exercise 14: Object Methods (Object.keys, values, entries)
 console.log("\nExercise 14: Object Methods")
